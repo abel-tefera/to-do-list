@@ -1,37 +1,40 @@
 import './style.css';
+import {TodoItem} from './modules/TodoItem';
 
 const todos = [
   {
-    _id: 1,
-    title: 'Work',
-    description: 'You have to work to live?',
+    description: 'work out',
     completed: false,
+    index: 1,
   },
   {
-    _id: 2,
-    title: 'Eat',
-    description: 'You have to eat to live?',
+    description: 'complete To Do list project',
     completed: false,
+    index: 2,
   },
   {
-    _id: 3,
-    title: 'Sleep',
-    description: 'You have to sleep to live?',
-    completed: false,
+    description: 'prepare for interview',
+    completed: true,
+    index: 3,
   },
 ];
+
+customElements.define('todo-item', TodoItem);
 
 const main = () => {
   const todoList = document.querySelector('.todo-list');
   for (const todo of todos) {
-    const listItem = document.createElement('li');
-    listItem.classList.add('todo-item');
-    const check = document.createElement('input');
-    check.type = 'checkbox';
-    check.classList.add('todo-checkbox');
-    listItem.innerHTML = `${todo.title}`;
-    listItem.insertAdjacentElement('afterbegin', check);
-    todoList.appendChild(listItem);
+    const {index, description, completed} = todo;
+
+    const todoLi = document.createElement('li');
+    todoLi.classList.add('todo-item', 'bottom-border');
+    todoLi.innerHTML = `<todo-item
+    index=${JSON.stringify(index)}
+    description=${JSON.stringify(description)}
+    completed=${JSON.stringify(completed)}
+    class="todo-item"
+    ></todo-item>`;
+    todoList.appendChild(todoLi);
   }
 };
 
