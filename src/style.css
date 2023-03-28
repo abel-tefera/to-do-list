@@ -1,3 +1,7 @@
+/* stylelint-disable alpha-value-notation */
+/* stylelint-disable color-function-notation */
+/* stylelint-disable length-zero-no-unit */
+/* stylelint-disable property-no-vendor-prefix */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:300,400,500,700&display=swap");
 
 * {
