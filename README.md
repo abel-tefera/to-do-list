@@ -32,9 +32,9 @@
 
 # 📖 To-Do List <a name="about-project"></a>
 
-> A project for completing module-1. This project is an event website for a chess tournament.
+> A project for demonstrating how we can use webpack to bundle a javascript application.
 
-**To-Do List** will showcase my skills and accomplishments as a developer.
+**To-Do List** will be a simple todo list tracker built on webpack.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -143,6 +143,10 @@ You can deploy this project using: N/A
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🔭 Future Features <a name="future-features"></a>
+
+- [ ] **Adding todo items**
+- [ ] **Removing todo items**
+- [ ] **Marking items as completed**
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
