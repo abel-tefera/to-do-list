@@ -144,6 +144,10 @@ You can deploy this project using: N/A
 
 ## 🔭 Future Features <a name="future-features"></a>
 
+- [ ] **Adding todo items**
+- [ ] **Removing todo items**
+- [ ] **Marking items as completed**
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
