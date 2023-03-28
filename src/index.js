@@ -1,4 +1,4 @@
-import "./style.css"
+import "./style.css";
 
 const todos = [
   {
@@ -22,12 +22,19 @@ const todos = [
 ];
 
 const main = () => {
-    const todoList = document.querySelector('.todo-list');
-    for (const todo of todos){
-        const listItem = document.createElement('li');
-        listItem.innerHTML = todo.title
-        todoList.appendChild(listItem)
-    }
-}
+  const todoList = document.querySelector(".todo-list");
+  for (const [i, todo] of todos.entries()) {
+    const listItem = document.createElement("li");
+    // if (i < todos.length - 1) {
+      listItem.classList.add("todo-item");
+    // }
+    const check = document.createElement("input");
+    check.type = 'checkbox';
+    check.classList.add('todo-checkbox')
+    listItem.innerHTML = `${todo.title}`;
+    listItem.insertAdjacentElement('afterbegin', check)
+    todoList.appendChild(listItem);
+  }
+};
 
 main();
