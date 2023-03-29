@@ -26,7 +26,8 @@ body {
 
 .todo-container {
   background-color: white;
-  width: fit-content;
+  min-width: fit-content;
+  width: 60%;
 }
 
 .todo-div {
@@ -50,6 +51,18 @@ body {
   width: 100%;
 }
 
+.centered {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.plr {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
 .todo-text {
   padding: 0.5rem 0 0.5rem 0.5rem;
   margin: 0;
@@ -58,15 +71,18 @@ body {
 .todo-input {
   border: none;
   font-size: initial;
-  padding: 0.5rem;
+  padding: 0;
   max-width: max-content;
   margin: 0.5rem;
+  font-family: inherit;
+  font-style: italic;
 }
 
 .todo-item {
   display: flex;
   flex-direction: row;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
+  align-items: center;
 }
 
 .bottom-border {
@@ -98,6 +114,41 @@ body {
 
 .m-0 {
   margin: 0;
+}
+
+.todoitem-span {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+}
+
+.fa {
+  cursor: pointer;
+}
+
+.disable-outline:focus {
+  outline: none;
+}
+
+.todo-edit {
+  font-family: inherit;
+  font-size: inherit;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.todo-span {
+  display: flex;
+  flex-direction: row;
+}
+
+.todo-span-reversed {
+  flex-direction: row-reverse !important;
+}
+
+.todo-desc {
+  align-self: center;
 }
 
 @media only screen and (min-width: 768px) {

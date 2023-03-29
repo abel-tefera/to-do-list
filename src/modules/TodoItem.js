@@ -1,15 +1,28 @@
 export class TodoItem extends HTMLElement {
   connectedCallback() {
     const {index, completed, description} = this.attributes;
-    const checked = (completed.value == 'true') ? 'checked' : undefined;
+    const checked = completed.value == 'true' ? 'checked' : undefined;
     this.innerHTML = `
+    <span class="todoitem-span">
       <input
-        id="todo-${index.value}"
+        id="todo-checkbox-${index.value}"
         class="todo-checkbox"
         type="checkbox"
         ${checked}
       />
-      <p class="m-0">${description.value}</p>
+      <span class="todo-span" id="todo-span-${index.value}">
+      <p class="m-0 todo-desc" 
+      id="todo-desc-${index.value}">
+      ${description.value}</p>
+      <input
+        id="todo-edit-${index.value}" 
+        class="todo-edit disable-outline"
+        type="text"
+      />
+      </span>
+    </span>
+      <i class="fa fa-ellipsis-v dot-3" id="todo-move-${index.value}"></i>
+      <i class="fa fa-trash todo-trash" id="todo-delete-${index.value}"></i>
     `;
   }
 }
