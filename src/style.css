@@ -71,16 +71,18 @@ body {
 .todo-input {
   border: none;
   font-size: initial;
-  padding: 0.5rem;
+  padding: 0;
   max-width: max-content;
   margin: 0.5rem;
+  font-family: inherit;
+  font-style: italic;
 }
 
 .todo-item {
   display: flex;
   flex-direction: row;
-  padding: 0.5rem 0;
-  margin: 0 1rem;
+  padding: 0.5rem 1rem;
+  align-items: center;
 }
 
 .bottom-border {
@@ -122,6 +124,31 @@ body {
 
 .fa {
   cursor: pointer;
+}
+
+.disable-outline:focus {
+  outline: none;
+}
+
+.todo-edit {
+  font-family: inherit;
+  font-size: inherit;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.todo-span {
+  display: flex;
+  flex-direction: row;
+}
+
+.todo-span-reversed {
+  flex-direction: row-reverse !important;
+}
+
+.todo-desc {
+  align-self: center;
 }
 
 @media only screen and (min-width: 768px) {
