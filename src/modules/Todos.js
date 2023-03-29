@@ -16,7 +16,6 @@ export class Todos {
   }
 
   removeTodo(idx) {
-    console.log('XX', idx);
     this.todoList = this.todoList.filter(({index}) => index !== idx);
     this.todoList = this.todoList.map((todo, i) => {
       return {
@@ -38,6 +37,7 @@ export class Todos {
         ...todos,
       };
     });
+    this.saveToLocalStorage();
   }
 
   saveToLocalStorage() {
