@@ -52,14 +52,14 @@ const main = () => {
         handleEdit(editId, newDesc);
       }
     });
-    todoEdit.style.visibility = 'hidden';
+    todoEdit.style.display = 'none';
   });
 
   const todoDescs = document.querySelectorAll('.todo-desc');
   todoDescs.forEach((todoDesc) => {
     todoDesc.addEventListener('click', (e) => {
       const descId = e.target.id.split('-')[2];
-      todoDesc.style.visibility = 'hidden';
+      todoDesc.style.display = 'none';
       const todoMove = document.getElementById(`todo-move-${descId}`);
       todoMove.style.display = 'none';
 
@@ -77,7 +77,7 @@ const main = () => {
       todoContainer.style.backgroundColor = '#f1ea6e';
 
       todoEdit.value = todoDesc.innerHTML.trim();
-      todoEdit.style.visibility = 'visible';
+      todoEdit.style.display = 'inline-block';
       todoDelete.style.display = 'inline-block';
       todoEdit.focus();
     });
