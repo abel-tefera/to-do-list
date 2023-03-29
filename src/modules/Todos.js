@@ -7,40 +7,40 @@ export class Todos {
       todoDataFromLocalStorage !== undefined &&
       todoDataFromLocalStorage !== null;
 
-    this.todoList = todoLSExists ?
-      todoDataFromLocalStorage :
-      [
-      ];
+    this.todoList = todoLSExists ? todoDataFromLocalStorage : [];
   }
 
   addTodo(todo) {
     this.todoList.push(todo);
-    localStorage.setItem('todoData', JSON.stringify(this.todoList));
+    this.saveToLocalStorage();
   }
 
-  removeCompleted() {
-    this.todoList = this.todoList.filter(({completed}) => completed !== true);
+  removeTodo(idx) {
+    console.log('XX', idx);
+    this.todoList = this.todoList.filter(({index}) => index !== idx);
     this.todoList = this.todoList.map((todo, i) => {
       return {
         ...todo,
         index: i,
       };
     });
-    localStorage.setItem('todoData', JSON.stringify(this.todoList));
+    this.saveToLocalStorage();
   }
 
-  markCompleted(idx) {
-    this.todoList = this.todoList.map((todo) => {
-      if (todo.index === parseInt(idx)) {
-        return {
-          ...todo,
-          completed: !todo.completed,
-        };
+  editTodo(idx, newDesc) {
+    const todo = this.todoList.find(({index}) => index === parseInt(idx));
+    todo.description = newDesc;
+    this.todoList = this.todoList.map((todos) => {
+      if (todos.index === idx) {
+        return todo;
       }
       return {
-        ...todo,
+        ...todos,
       };
     });
+  }
+
+  saveToLocalStorage() {
     localStorage.setItem('todoData', JSON.stringify(this.todoList));
   }
 }
