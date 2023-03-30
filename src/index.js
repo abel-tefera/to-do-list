@@ -120,7 +120,6 @@ const main = () => {
     });
     dropTarget.addEventListener('dragleave', (e) => {
       e.target.classList.remove('drag-over');
-      console.log('dragleave');
     });
     dropTarget.addEventListener('drop', (e) => {
       e.target.classList.remove('drag-over');

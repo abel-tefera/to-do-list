@@ -62,7 +62,6 @@ export class Todos {
   }
 
   dragDrop(i, j) {
-    console.log('X', i, j);
     this.todoList.splice(j, 0, this.todoList.splice(i, 1)[0]);
     this.todoList = this.resetIndex();
     this.saveToLocalStorage();
