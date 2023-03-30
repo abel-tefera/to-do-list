@@ -3,7 +3,7 @@ export class TodoItem extends HTMLElement {
     const {index, completed, description} = this.attributes;
     const checked = completed.value == 'true' ? 'checked' : undefined;
     this.innerHTML = `
-    <span class="todoitem-span">
+    <span class="todoitem-span" id="todo-container-${index.value}">
       <input
         id="todo-checkbox-${index.value}"
         class="todo-checkbox"
@@ -21,8 +21,10 @@ export class TodoItem extends HTMLElement {
       />
       </span>
     </span>
-      <i class="fa fa-ellipsis-v dot-3" id="todo-move-${index.value}"></i>
-      <i class="fa fa-trash todo-trash" id="todo-delete-${index.value}"></i>
+      <i class="fa fa-ellipsis-v dot-3 drag-icon" 
+      id="todo-move-${index.value}"></i>
+      <i class="fa fa-trash todo-trash click-icon" 
+      id="todo-delete-${index.value}"></i>
     `;
   }
 }
