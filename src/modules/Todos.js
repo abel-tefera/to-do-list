@@ -40,6 +40,42 @@ export class Todos {
     this.saveToLocalStorage();
   }
 
+  removeCompleted() {
+    this.todoList = this.todoList.filter(({completed}) => completed !== true);
+    this.todoList = this.resetIndex();
+    this.saveToLocalStorage();
+  }
+
+  markCompleted(idx) {
+    this.todoList = this.todoList.map((todo) => {
+      if (todo.index === parseInt(idx)) {
+        return {
+          ...todo,
+          completed: !todo.completed,
+        };
+      }
+      return {
+        ...todo,
+      };
+    });
+    this.saveToLocalStorage();
+  }
+
+  dragDrop(i, j) {
+    this.todoList.splice(j, 0, this.todoList.splice(i, 1)[0]);
+    this.todoList = this.resetIndex();
+    this.saveToLocalStorage();
+  }
+
+  resetIndex() {
+    return this.todoList.map((todo, i) => {
+      return {
+        ...todo,
+        index: i,
+      };
+    });
+  }
+
   saveToLocalStorage() {
     localStorage.setItem('todoData', JSON.stringify(this.todoList));
   }

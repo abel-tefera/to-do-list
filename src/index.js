@@ -15,13 +15,14 @@ const main = () => {
     const {index, description, completed} = todo;
 
     const todoLi = document.createElement('li');
-    todoLi.classList.add('bottom-border');
+    todoLi.classList.add(`drop-target-${JSON.stringify(index)}`);
     todoLi.innerHTML = `<todo-item
     id="todo-item-${JSON.stringify(index)}"
     index=${JSON.stringify(index)}
     description=${JSON.stringify(description)}
     completed=${JSON.stringify(completed)}
-    class="todo-item"
+    class="todo-item bottom-border"
+    draggable="true"
     ></todo-item>`;
     todoList.appendChild(todoLi);
   }
@@ -82,6 +83,57 @@ const main = () => {
       todoEdit.focus();
     });
   });
+
+  const checkBoxes = document.querySelectorAll('.todo-checkbox');
+  checkBoxes.forEach((checkbox) => {
+    checkbox.addEventListener('change', (e) => {
+      const index = e.target.id.split('-')[2];
+      const todoDesc = document.getElementById(`todo-desc-${index}`);
+      if (checkbox.checked) {
+        todoDesc.classList.add('completed-todo');
+      } else {
+        todoDesc.classList.remove('completed-todo');
+      }
+      todos.markCompleted(index);
+    });
+  });
+
+  const todoItems = document.querySelectorAll('.todo-item');
+  todoItems.forEach((todoItem) => {
+    todoItem.addEventListener('dragstart', (e) => {
+      e.dataTransfer.setData('text/plain', e.target.id);
+      setTimeout(() => {
+        e.target.style.display = 'none';
+      }, 0);
+    });
+  });
+
+  const dropTargets = document.querySelectorAll('[class^=drop-target]');
+  dropTargets.forEach((dropTarget) => {
+    dropTarget.addEventListener('dragenter', (e) => {
+      e.preventDefault();
+      e.target.classList.add('drag-over');
+    });
+    dropTarget.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      e.target.classList.add('drag-over');
+    });
+    dropTarget.addEventListener('dragleave', (e) => {
+      e.target.classList.remove('drag-over');
+    });
+    dropTarget.addEventListener('drop', (e) => {
+      e.target.classList.remove('drag-over');
+
+      const id = e.dataTransfer.getData('text/plain');
+
+      const indexDrag = parseInt(id.split('-')[2]);
+      const indexDrop = parseInt(e.target.id.split('-')[2]);
+
+      todos.dragDrop(indexDrag, indexDrop);
+      todoList.innerHTML = '';
+      main();
+    });
+  });
 };
 const todoInput = document.querySelector('.todo-input');
 const clearCompleted = document.querySelector('.clear');
@@ -102,7 +154,7 @@ const addTodoHandler = () => {
 };
 
 const removeHandler = () => {
-  // todos.removeCompleted();
+  todos.removeCompleted();
   todoList.innerHTML = '';
   main();
 };
