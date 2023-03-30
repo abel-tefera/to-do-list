@@ -122,8 +122,13 @@ body {
   justify-content: start;
 }
 
-.fa {
+.click-icon {
   cursor: pointer;
+}
+
+.drag-icon {
+  cursor: move;
+  cursor: grab;
 }
 
 .disable-outline:focus {
@@ -149,6 +154,11 @@ body {
 
 .todo-desc {
   align-self: center;
+}
+
+.completed-todo {
+  text-decoration: line-through;
+  color: lightgray
 }
 
 @media only screen and (min-width: 768px) {
