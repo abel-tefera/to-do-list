@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 import './style.css';
@@ -139,7 +141,10 @@ const todoInput = document.querySelector('.todo-input');
 const clearCompleted = document.querySelector('.clear');
 
 todoInput.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' || e.keyCode === 13) {
+  if (
+    (e.key === 'Enter' || e.keyCode === 13) &&
+    todoInput.value.trim() !== ''
+  ) {
     addTodoHandler();
   }
 });
@@ -160,7 +165,21 @@ const removeHandler = () => {
 };
 
 const addBtn = document.querySelector('.fa-plus');
-addBtn.addEventListener('click', addTodoHandler);
+addBtn.addEventListener('click', () => {
+  if (todoInput.value.trim() !== '') {
+    addTodoHandler();
+  }
+});
 clearCompleted.addEventListener('click', removeHandler);
+
+const refresh = document.querySelector('.refresh-btn');
+refresh.addEventListener('click', (e) => {
+  e.target.classList.add('refresh');
+  todoList.innerHTML = '';
+  main();
+  setTimeout(() => {
+    e.target.classList.remove('refresh');
+  }, 2000)
+})
 
 main();

@@ -161,6 +161,11 @@ body {
   color: lightgray;
 }
 
+.refresh {
+  transform: rotate(360);
+  transition: transform 0.5s;
+}
+
 @media only screen and (min-width: 768px) {
   .container {
     margin-left: 3rem;
