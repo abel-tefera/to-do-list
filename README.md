@@ -82,7 +82,7 @@
 
 > Here's the link to my project: 
 
- - [Coming Soon]()
+ - [To-Do List](https://abel-tefera.github.io/to-do-list/dist)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
