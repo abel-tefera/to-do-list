@@ -1,4 +1,4 @@
-export const setUpDropTargets = () => {
+export const setUpDropTargets = (todos, todoList, main) => {
   const dropTargets = document.querySelectorAll('[class^=drop-target]');
   dropTargets.forEach((dropTarget) => {
     dropTarget.addEventListener('dragenter', (e) => {

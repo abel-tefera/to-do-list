@@ -11,13 +11,14 @@ export class TodoItem extends HTMLElement {
         ${checked}
       />
       <span class="todo-span" id="todo-span-${index.value}">
-      <p class="m-0 todo-desc" 
-      id="todo-desc-${index.value}">
+      <p class="m-0 todo-desc ${checked ? 'completed-todo' : ''}" 
+      id="todo-desc-${index.value}" >
       ${description.value}</p>
       <input
         id="todo-edit-${index.value}" 
         class="todo-edit disable-outline"
         type="text"
+        maxlength="30"
       />
       </span>
     </span>

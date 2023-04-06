@@ -31,7 +31,7 @@ const main = () => {
     todoList.appendChild(todoLi);
   }
   setUpEventListeners(todos, todoList, main);
-  setUpDropTargets();
+  setUpDropTargets(todos, todoList, main);
 };
 const todoInput = document.querySelector('.todo-input');
 const clearCompleted = document.querySelector('.clear');
